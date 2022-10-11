@@ -1,0 +1,7 @@
+{
+  "name": "FrogGame",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
