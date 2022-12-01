@@ -3,8 +3,25 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'tabs',
+    loadChildren: () => import('../navigation/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    redirectTo: 'startscreen',
+    pathMatch: 'full'
+  },
+  {
+    path: 'startscreen',
+    loadChildren: () => import('../navigation/startscreen/startscreen.module').then(m => m.StartscreenPageModule)
+  },
+  {
+    path: 'tabScore',
+    loadChildren: () => import('../navigation/tabScore/tab-score.module').then(m => m.TabScorePageModule)
+  },
+  {
+    path: 'tabMenu',
+    loadChildren: () => import('../navigation/tabMenu/tab-menu.module').then(m => m.TabMenuPageModule)
   }
 ];
 @NgModule({
