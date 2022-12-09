@@ -2,16 +2,15 @@ import { Component } from '@angular/core';
 import {MenuService} from '../../services/menu.service';
 
 @Component({
-  selector: 'app-tab-rps',
-  templateUrl: 'tabRPS.page.html',
-  styleUrls: ['tabRPS.page.scss']
+  selector: 'app-tab-bke',
+  templateUrl: 'tabBKE.page.html',
+  styleUrls: ['tabBKE.page.scss']
 })
-export class TabRPSPage {
-
+export class TabBKEPage {
 
   constructor(public menuService: MenuService) {}
   ionViewWillEnter()
   {
-  this.menuService.getAllRpsPages();
+    this.menuService.getAllBkePages();
   }
 }

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Tab1Page } from './tab1.page';
+import { TabFroggyTapPage } from './tabFroggyTap.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: Tab1Page,
+    component: TabFroggyTapPage,
+  },
+  {
+    path: 'solo-mode',
+    loadChildren: () => import('./solo-mode/solo-mode.module').then( m => m.SoloModePageModule)
   }
 ];
 

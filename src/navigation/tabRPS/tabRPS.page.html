@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Schaar steen papier!
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<div class="ion-page" id="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Schaar, steen papier!</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Schaar, steen, papier!</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab RPS page"></app-explore-container>
-</ion-content>
+  <ion-content class="ion-padding">
+    <h1>Lokale regels</h1>
+    <ol>
+      <li>Valsspelen mag, maar er zijn grenzen.</li>
+      <li>Een speler mag enkel de aangeboden wapens gebruiken om hun tegenstander op de meeste gruwelijke manier te vermoorden.</li>
+    </ol>
+  </ion-content>
+</div>

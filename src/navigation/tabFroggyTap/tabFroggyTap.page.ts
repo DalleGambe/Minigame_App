@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import {MenuService} from '../../services/menu.service';
 
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-tab-froggy-tap',
+  templateUrl: 'tabFroggyTap.page.html',
+  styleUrls: ['tabFroggyTap.page.scss']
 })
 
-export class Tab1Page {
-  constructor() {
+export class TabFroggyTapPage {
+  constructor(public menuService: MenuService) {}
+  ionViewWillEnter()
+  {
+    this.menuService.getAllFroggyTapPages();
   }
   public async moveEyes(){
     /*const container = document.querySelector('.container');

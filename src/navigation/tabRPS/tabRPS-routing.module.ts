@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: TabRPSPage,
+  },
+  {
+    path: 'vs-player',
+    loadChildren: () => import('./rpsTabs/vs-player/vs-player.module').then( m => m.VsPlayerPageModule)
+  },
+  {
+    path: 'vs-ai',
+    loadChildren: () => import('./rpsTabs/vs-ai/vs-ai.module').then( m => m.VsAiPageModule)
   }
 ];
 
