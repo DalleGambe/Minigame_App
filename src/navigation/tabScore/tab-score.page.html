@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Scorebord</ion-title>
+    <ion-select class="ion-padding-horizontal" interface="popover"
+                slot='end' [(ngModel)]='selectedMinigameFilter'>
+      <ion-select-option *ngFor='let f of filtersMinigames' [value]="f">
+        {{f}}
+      </ion-select-option>
+    </ion-select>
+    <ion-select class="ion-padding-horizontal" interface="popover"
+                slot='end' [(ngModel)]='selectedStateFilter'>
+      <ion-select-option *ngFor='let f of filtersState' [value]="f">
+        {{f}}
+      </ion-select-option>
+    </ion-select>
+  </ion-toolbar>
+  <hr>
+<ion-toolbar>
+  <ion-select class="ion-padding-horizontal" interface="popover"
+              slot='end' [(ngModel)]='selectedScoreFilter'>
+    <ion-select-option *ngFor='let f of filterScores' [value]="f">
+      {{f}}
+    </ion-select-option>
+  </ion-select>
+  <ion-select class="ion-padding-horizontal" interface="popover"
+              slot='end' [(ngModel)]='selectedModeFilter'>
+    <ion-select-option *ngFor='let f of filterModes' [value]="f">
+      {{f}}
+    </ion-select-option>
+  </ion-select>
+</ion-toolbar>
+</ion-header>
+
+<ion-list lines='full'>
+  <!--
+  The *ngFor directive allows for iteration over a array or other
+  iterable object. The iteration variable task can be used within the confines
+  of the tag which contains the *ngFor.
+  <app-task-item> Is a custom component defined in /shared/task-item/*
+  -->
+  <app-score
+    *ngFor='let s of scoreService.getAllScores()'
+    [score]='s'>
+  </app-score>
+</ion-list>
+
+<ion-content>
+
+</ion-content>
