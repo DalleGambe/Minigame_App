@@ -8,10 +8,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from '../shared/shared.module';
 
+import {provideFirebaseApp, initializeApp} from '@angular/fire/app';
+import {environment} from '../environments/environment';
+import {getAuth, provideAuth} from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [AppComponent],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule],
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule,    // Firebase main import.
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      // Firebase authentication import.
+      provideAuth(() => getAuth())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
