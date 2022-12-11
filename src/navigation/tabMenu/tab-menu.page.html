@@ -8,7 +8,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button>
+        <ion-button (click)="goToLoginHub()" *ngIf="(!authService.isLoggedIn()); else LoggedInUser">
           <ion-icon slot="start" name="person"></ion-icon>
           Log in
         </ion-button>
@@ -36,3 +36,28 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ng-template #LoggedInUser>
+  <ion-button *ngIf="(authService.currentUser | async); let user" id="logOutPopover">
+    <ion-avatar slot="start">
+      <img [src]="user?.photoURL ?? placeholder" #avatar (error)="avatar.src = placeholder">
+    </ion-avatar>
+    <ion-label>
+      <ion-list-header>
+        {{user.displayName}}
+      </ion-list-header>
+    </ion-label>
+  </ion-button>
+  <ion-popover trigger="logOutPopover" triggerAction="click">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-item (click)="signOut()">
+          Log out
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</ng-template>
+
+
+

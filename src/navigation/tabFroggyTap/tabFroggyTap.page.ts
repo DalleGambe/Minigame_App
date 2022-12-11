@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {MenuService} from '../../services/menu.service';
+import {MenuController} from '@ionic/angular';
 
 
 @Component({
@@ -9,10 +10,17 @@ import {MenuService} from '../../services/menu.service';
 })
 
 export class TabFroggyTapPage {
-  constructor(public menuService: MenuService) {}
+  constructor(public menuService: MenuService, public menuController: MenuController) {}
   ionViewWillEnter()
   {
+    //enables the sidemenu when the user leaves the Froggy Tap page
+    this.menuController.enable(true).then();
+    //fills the side menu with navigation options
     this.menuService.getAllFroggyTapPages();
+  }
+  ionViewWillLeave() {
+    //disables the sidemenu when the user leaves the Froggy Tap page
+    this.menuController.enable(false).then();
   }
   public async moveEyes(){
     /*const container = document.querySelector('.container');

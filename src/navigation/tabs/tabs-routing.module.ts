@@ -22,6 +22,11 @@ const routes: Routes = [
         path: 'tabMenu',
         loadChildren: () => import('../tabMenu/tab-menu.module').then(m => m.TabMenuPageModule)
       },
+      //login pagina
+      {
+        path: 'tabMenu/login-hub',
+        loadChildren: () => import('../tabMenu/login-hub/login-hub.module').then(m => m.LoginHubPageModule)
+      },
       //Schaar steen papier
       {
         path: 'tabRPS',

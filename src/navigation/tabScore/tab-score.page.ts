@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Filter} from '../../datatypes/filters/filter';
 import {FilterMinigames} from '../../datatypes/filters/filterMinigames';
 import {FilterModes} from '../../datatypes/filters/filterModes';
@@ -10,7 +10,7 @@ import {FilterScores} from '../../datatypes/filters/filterScores';
   templateUrl: './tab-score.page.html',
   styleUrls: ['./tab-score.page.scss'],
 })
-export class TabScorePage implements OnInit {
+export class TabScorePage {
 
   // The filters are defined in an enum, the enum must first be converted to an
   // array because enums aren't iterable.
@@ -27,9 +27,6 @@ export class TabScorePage implements OnInit {
   selectedScoreFilter = this.filterScores[0];
 
   constructor(public scoreService: ScoreService) {
-  }
-
-  ngOnInit() {
   }
 
 }

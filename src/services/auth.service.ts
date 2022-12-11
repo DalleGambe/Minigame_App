@@ -82,9 +82,7 @@ export class AuthService {
   private async setCurrentUser(user: User): Promise<void> {
     this.currentUser.next(user);
     if (this.currentUser.value) {
-      await this.router.navigate(['/']);
-    } else {
-      await this.router.navigate(['/login']);
+      await this.router.navigate(['tabs/tabMenu']);
     }
   }
 }

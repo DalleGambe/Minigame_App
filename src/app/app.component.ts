@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {MenuService} from '../services/menu.service';
-import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -9,7 +8,7 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(public menuService: MenuService, public authService: AuthService) {
+  constructor(public menuService: MenuService) {
   }
 }
 

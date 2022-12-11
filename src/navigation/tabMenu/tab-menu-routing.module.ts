@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TabMenuPage
+  },
+  {
+    path: 'login-hub',
+    loadChildren: () => import('./login-hub/login-hub.module').then(m => m.LoginHubPageModule)
   }
 ];
 
