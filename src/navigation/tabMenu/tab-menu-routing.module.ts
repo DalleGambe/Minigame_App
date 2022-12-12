@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'login-hub',
     loadChildren: () => import('./login-hub/login-hub.module').then(m => m.LoginHubPageModule)
+  },  {
+    path: 'app-menu-settings',
+    loadChildren: () => import('./app-menu-settings/app-menu-settings.module').then( m => m.AppMenuSettingsPageModule)
   }
+
 ];
 
 @NgModule({

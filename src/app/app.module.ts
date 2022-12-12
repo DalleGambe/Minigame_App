@@ -10,12 +10,12 @@ import {SharedModule} from '../shared/shared.module';
 
 import {provideFirebaseApp, initializeApp} from '@angular/fire/app';
 import {environment} from '../environments/environment';
-import {getAuth, provideAuth} from '@angular/fire/auth';
+import {getAuth, provideAuth} from '@angular/fire/auth' ;
 
 
 @NgModule({
   declarations: [AppComponent],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule,    // Firebase main import.
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule,
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
       // Firebase authentication import.
       provideAuth(() => getAuth())],

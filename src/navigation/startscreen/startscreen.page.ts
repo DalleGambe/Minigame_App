@@ -16,11 +16,6 @@ export class StartscreenPage {
   {
     this.menuController.enable(false).then();
   }
-  //enables the sidemenu when the user leaves the menu page
-  ionViewDidLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menuController.enable(true).then();
-  }
 
   //hides the bar with tabs on this page
    hideTabBar = (): void => {
