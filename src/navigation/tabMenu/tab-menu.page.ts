@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
@@ -14,6 +14,7 @@ export class TabMenuPage {
   readonly placeholder = '/assets/images/placeholders/Portrait_Placeholder.png';
 
 
+  // eslint-disable-next-line max-len
   constructor(public authService: AuthService, private route: Router, private alertController: AlertController) {
   }
 
