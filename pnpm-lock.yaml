@@ -24,7 +24,9 @@ specifiers:
   '@capacitor/core': ^4.3.0
   '@capacitor/haptics': 4.0.1
   '@capacitor/keyboard': 4.0.1
+  '@capacitor/preferences': ^4.0.2
   '@capacitor/status-bar': 4.0.1
+  '@capgo/native-audio': ^5.0.4
   '@ionic/angular': ^6.1.9
   '@ionic/angular-toolkit': ^6.0.0
   '@types/jasmine': ~3.6.0
@@ -68,7 +70,9 @@ dependencies:
   '@capacitor/core': 4.6.1
   '@capacitor/haptics': 4.0.1_@capacitor+core@4.6.1
   '@capacitor/keyboard': 4.0.1_@capacitor+core@4.6.1
+  '@capacitor/preferences': 4.0.2_@capacitor+core@4.6.1
   '@capacitor/status-bar': 4.0.1_@capacitor+core@4.6.1
+  '@capgo/native-audio': 5.0.4_@capacitor+core@4.6.1
   '@ionic/angular': 6.3.0_rccjhj6z4m5e4vgtmro4gxsmem
   firebase: 9.15.0
   ionicons: 6.0.3
@@ -1892,8 +1896,24 @@ packages:
       '@capacitor/core': 4.6.1
     dev: false
 
+  /@capacitor/preferences/4.0.2_@capacitor+core@4.6.1:
+    resolution: {integrity: sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==}
+    peerDependencies:
+      '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 4.6.1
+    dev: false
+
   /@capacitor/status-bar/4.0.1_@capacitor+core@4.6.1:
     resolution: {integrity: sha512-BmEyOf3m/hAf8bO4hCX0m5gpQPSgd05mGYl+9E841WUZeJjcYlmiG/EBshAUb2uGCVtyNaG36yPXB0r0Ypg+rw==}
+    peerDependencies:
+      '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 4.6.1
+    dev: false
+
+  /@capgo/native-audio/5.0.4_@capacitor+core@4.6.1:
+    resolution: {integrity: sha512-yvpPf1gwwWamwoaKkcjPIQfc9BiKUTTPPOd8fZyPZx3d9RZ14zH9eu2K5lMQyL+xnoxecyg7iD1rlhmrIJVAbw==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:

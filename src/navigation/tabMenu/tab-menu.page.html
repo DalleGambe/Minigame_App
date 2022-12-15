@@ -4,9 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
+<audio *ngIf="isNative() === false" loop src="assets/sounds/mario.mp3" autoplay></audio>
+
 <ion-content style="margin: 5px">
   <ion-grid>
-    <ion-row>
+    <ion-row style="margin-bottom: 50px">
       <ion-col>
         <ion-button (click)="goToLoginHub()" *ngIf="(!authService.isLoggedIn()); else LoggedInUser">
           <ion-icon slot="start" name="person"></ion-icon>
@@ -18,11 +20,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="ion-align-items-center">
-      <ion-col size="12" style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);">
+      <ion-col size="12"  style="margin-top: 40px">
       <div class="ion-text-center" style="font-size: 28px">
         <ion-text>Laatst gespeelde minigame:</ion-text>
       </div>
@@ -32,6 +30,13 @@
     <div class="ion-justify-content-center" style="display:flex; vertical-align: middle;">
     <ion-icon name="cut" style="font-size: 128px;" ></ion-icon>
     </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 75px">
+      <ion-col size="12">
+        <ion-item class="creditText" style="max-width: 250px">
+          Music by: Ryan Van de Vreken
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>

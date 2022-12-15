@@ -65,12 +65,12 @@ export class AuthService {
   }
   async signInWithGithub(): Promise<void> {
     // Sign in on the native layer.
-    const {credential: {idToken}} =
+    const {credential: {accessToken}} =
       await FirebaseAuthentication.signInWithGithub();
 
     // Sign in on the web layer.
     if (Capacitor.isNativePlatform()) {
-      const credential = GithubAuthProvider.credential(idToken);
+      const credential = GithubAuthProvider.credential(accessToken);
       await signInWithCredential(this.auth, credential);
     }
   }
