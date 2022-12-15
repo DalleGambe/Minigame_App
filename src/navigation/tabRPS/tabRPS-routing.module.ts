@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'vs-ai',
     loadChildren: () => import('./rpsTabs/vs-ai/vs-ai.module').then( m => m.VsAiPageModule)
+  },  {
+    path: 'choose-name',
+    loadChildren: () => import('./rpsTabs/choose-name/choose-name.module').then( m => m.ChooseNamePageModule)
+  },
+  {
+    path: 'rps-arena',
+    loadChildren: () => import('./rpsTabs/rps-arena/rps-arena.module').then( m => m.RpsArenaPageModule)
   }
+
 ];
 
 @NgModule({

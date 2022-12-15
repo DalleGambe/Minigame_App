@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MenuService} from '../../../../services/menu.service';
 import {MenuController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {MenuController} from '@ionic/angular';
 })
 export class VsAiPage {
 
-  constructor(public menuService: MenuService, public menuController: MenuController) {}
+  constructor(public menuService: MenuService, public menuController: MenuController, private route: Router) {}
   ionViewWillEnter()
   {
     //enables the sidemenu when the user leaves the RPS vs ai page
@@ -21,5 +22,9 @@ export class VsAiPage {
   ionViewWillLeave() {
     //disables the sidemenu when the user leaves the RPS vs ai page
     this.menuController.enable(false).then();
+  }
+
+  goToChooseName() {
+    this.route.navigate(['tabs/tabRPS/rpsTabs/choose-name']).then();
   }
 }
