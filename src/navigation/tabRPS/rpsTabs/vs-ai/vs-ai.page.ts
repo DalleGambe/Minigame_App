@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MenuService} from '../../../../services/menu.service';
 import {MenuController} from '@ionic/angular';
 import {Router} from '@angular/router';
-
+import {MinigameDataService} from '../../../../services/minigameData.service';
 
 @Component({
   selector: 'app-vs-ai',
@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./vs-ai.page.scss'],
 })
 export class VsAiPage {
-
-  constructor(public menuService: MenuService, public menuController: MenuController, private route: Router) {}
+  constructor(public menuService: MenuService, public menuController: MenuController, private route: Router,
+              public minigameData: MinigameDataService) {}
   ionViewWillEnter()
   {
     //enables the sidemenu when the user leaves the RPS vs ai page
@@ -25,6 +25,7 @@ export class VsAiPage {
   }
 
   goToChooseName() {
+    this.minigameData.setMinigameModeToVsAi(true);
     this.route.navigate(['tabs/tabRPS/rpsTabs/choose-name']).then();
   }
 }

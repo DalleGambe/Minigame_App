@@ -24,7 +24,7 @@ export class TabMenuPage {
 
   async presentLogOutAlert() {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: 'Opgelet!',
       subHeader: 'Uitloggen',
       message: 'Ben je zeker dat je wilt uitloggen?',
       buttons: [
