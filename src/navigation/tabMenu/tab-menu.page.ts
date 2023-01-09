@@ -14,7 +14,6 @@ export class TabMenuPage {
 
   readonly placeholder = '/assets/images/placeholders/Portrait_Placeholder.png';
 
-
   // eslint-disable-next-line max-len
   constructor(public authService: AuthService,
               private route: Router,
@@ -25,7 +24,7 @@ export class TabMenuPage {
 
   async presentLogOutAlert() {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: 'Opgelet!',
       subHeader: 'Uitloggen',
       message: 'Ben je zeker dat je wilt uitloggen?',
       buttons: [
@@ -63,7 +62,7 @@ export class TabMenuPage {
     const slideOffScreen = this.animationCtrl.create()
       .addElement(document.querySelector('.creditText'))
       .duration(1250)
-      .fromTo('transform', 'translateX(0px)', 'translateX(-325px)');
+      .fromTo('transform', 'translateX(0px)', 'translateX(-350px)');
     slideOnScreen.play().then(await new Promise(f => setTimeout(f, 2500)));
     slideOffScreen.play().then(await new Promise(f => setTimeout(f, 1000)));
     slideOnScreen.stop();
@@ -78,9 +77,9 @@ export class TabMenuPage {
     if (Capacitor.isNativePlatform()) {
       NativeAudio.preload({
         assetId: 'mario',
-        assetPath: Capacitor.convertFileSrc('mario.mp3'),
+        assetPath: 'mario.mp3',
         audioChannelNum: 1,
-        isUrl: true
+        isUrl: false
       }).then();
       NativeAudio.loop({
         assetId: 'mario',

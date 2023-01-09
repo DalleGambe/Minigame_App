@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MenuPage} from '../../../datatypes/Pages/menuPage';
-import {MenuService} from '../../../services/menu.service';
+import {MinigameDataService} from '../../../services/minigameData.service';
 
 
 @Component({
@@ -10,9 +9,15 @@ import {MenuService} from '../../../services/menu.service';
 })
 export class RpsComponent implements OnInit {
 
-  @Input() pages: MenuPage;
-  constructor(public menuService: MenuService) {
+  max = 10;
+  pistolCheck = Math.floor(Math.random() * this.max);
+  constructor(public minigameData: MinigameDataService) {
   }
-  ngOnInit() {}
 
+  ngOnInit() {
+  }
+
+  showPistolOption() {
+    return this.pistolCheck === this.max;
+  }
 }

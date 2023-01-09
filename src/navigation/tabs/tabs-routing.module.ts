@@ -37,6 +37,14 @@ const routes: Routes = [
         path: 'tabRPS',
         loadChildren: () => import('../tabRPS/tabRPS.module').then(m => m.TabRPSPageModule)
       },
+      {
+        path: 'tabRPS/rpsTabs/choose-name',
+        loadChildren: () => import('../tabRPS/rpsTabs/choose-name/choose-name.module').then(m => m.ChooseNamePageModule),
+      },
+      {
+        path: 'tabRPS/rpsTabs/rps-arena',
+        loadChildren: () => import('../tabRPS/rpsTabs/rps-arena/rps-arena.module').then(m => m.RpsArenaPageModule)
+      },
       //Scorebord
       {
         path: 'tabScore',

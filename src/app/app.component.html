@@ -1,17 +1,21 @@
 <ion-app>
   <ion-menu contentId="main">
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="primary">
         <ion-title>Modussen</ion-title>
       </ion-toolbar>
     </ion-header>
+
+    <audio id="NotNativeAudio" *ngIf="isNative() === false" loop src="assets/sounds/mario.mp3"
+           ngDefaultControl [volume]="audioService.getAudioVolume()" autoplay></audio>
+
     <ion-content class="ion-padding">
       <ion-list>
         <ion-item *ngFor="let p of menuService.activeMenu">
-          <app-rps
+          <app-sidemenu
             [pages]="p" [routerLink]="[p.path]">
             <ion-icon item-start [name]="p.icon"></ion-icon>
-          </app-rps>
+          </app-sidemenu>
         </ion-item>
       </ion-list>
     </ion-content>

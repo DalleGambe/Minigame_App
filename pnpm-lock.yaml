@@ -29,6 +29,7 @@ specifiers:
   '@capgo/native-audio': ^5.0.4
   '@ionic/angular': ^6.1.9
   '@ionic/angular-toolkit': ^6.0.0
+  '@ionic/storage-angular': ^3.0.6
   '@types/jasmine': ~3.6.0
   '@types/jasminewd2': ~2.0.3
   '@types/node': ^12.11.1
@@ -74,6 +75,7 @@ dependencies:
   '@capacitor/status-bar': 4.0.1_@capacitor+core@4.6.1
   '@capgo/native-audio': 5.0.4_@capacitor+core@4.6.1
   '@ionic/angular': 6.3.0_rccjhj6z4m5e4vgtmro4gxsmem
+  '@ionic/storage-angular': 3.0.6_dd7odd3hpbsz6apcl7vz4bm2im
   firebase: 9.15.0
   ionicons: 6.0.3
   react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
@@ -2676,6 +2678,24 @@ packages:
       '@stencil/core': 2.18.1
       ionicons: 6.0.3
       tslib: 2.4.0
+    dev: false
+
+  /@ionic/storage-angular/3.0.6_dd7odd3hpbsz6apcl7vz4bm2im:
+    resolution: {integrity: sha512-ZXlIFWGU27aCxVFgZb0KFJFtWwnn6+HK6v0rMGzjN8f7oV2ewXaQ2dl1gTw/A8YoozTVPOFxwfFHCjhWLFR1Fw==}
+    peerDependencies:
+      '@angular/core': '*'
+      rxjs: '*'
+    dependencies:
+      '@angular/core': 14.2.5_rxjs@6.6.7+zone.js@0.11.8
+      '@ionic/storage': 3.0.6
+      rxjs: 6.6.7
+      tslib: 1.14.1
+    dev: false
+
+  /@ionic/storage/3.0.6:
+    resolution: {integrity: sha512-sw+zSJINIpbQCGZR9mEtb9N0WmZLuhcMVqOZJBqLuDACAMdXqG39zmp5nSVqhGI1/9X3nd0K5gVn6icyVfUnUg==}
+    dependencies:
+      localforage: 1.10.0
     dev: false
 
   /@ionic/utils-array/2.1.5:
@@ -6260,7 +6280,6 @@ packages:
 
   /immediate/3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
-    dev: true
 
   /immutable/4.1.0:
     resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
@@ -6997,6 +7016,12 @@ packages:
       webpack-sources: 3.2.3
     dev: true
 
+  /lie/3.1.1:
+    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
+
   /lie/3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
     dependencies:
@@ -7033,6 +7058,12 @@ packages:
     resolution: {integrity: sha512-HVl9ZqccQihZ7JM85dco1MvO9G+ONvxoGa9rkhzFsneGLKSUg1gJf9bWzhRhcvm2qChhWpebQhP44qxjKIUCaQ==}
     engines: {node: '>= 12.13.0'}
     dev: true
+
+  /localforage/1.10.0:
+    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
+    dependencies:
+      lie: 3.1.1
+    dev: false
 
   /locate-path/2.0.0:
     resolution: {integrity: sha512-NCI2kiDkyR7VeEKm27Kda/iQHyKJe1Bu0FlTbYp3CqJu+9IFe9bLyAjMxf5ZDDbEg+iMPzB5zYyUTSm8wVTKmA==}

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ScoreService} from '../../services/scoreService';
+import {ScoreService} from '../../services/score.service';
 import {ScoreRPS} from '../../datatypes/scores/scoreRPS';
 
 @Component({
