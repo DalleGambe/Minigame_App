@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Filter} from '../../datatypes/filters/filter';
 import {FilterMinigames} from '../../datatypes/filters/filterMinigames';
 import {FilterModes} from '../../datatypes/filters/filterModes';
-import {ScoreService} from '../../services/scoreService';
+import {ScoreService} from '../../services/score.service';
 import {FilterScores} from '../../datatypes/filters/filterScores';
 
 @Component({
