@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tabRPS"></ion-back-button>
+    </ion-buttons>
+    <ion-title>chooseName</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label class="headerTitle">Wie gaat er spelen?</ion-label>
+  <form [formGroup]="ionicForm" (ngSubmit)="goToRpsArena()" novalidate>
+    <ion-row class="ion-align-items-center titleRow">
+      <ion-col size="6">
+        <ion-label>Player 1</ion-label>
+        <ion-input placeholder="Bob" formControlName="playerOne"></ion-input>
+
+      </ion-col>
+      <ion-col size="6">
+        <ion-label>Player 2</ion-label>
+        <ion-input placeholder="Sandy" formControlName="playerTwo"></ion-input>
+      </ion-col>
+      <ion-button class="ion-color-primary" type="submit">Engarde!</ion-button>
+    </ion-row>
+  </form>
+</ion-content>

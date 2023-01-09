@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "149067789961",
+    "project_id": "mobiele-minigame-app",
+    "storage_bucket": "mobiele-minigame-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149067789961:android:f7f591aed6a61be047b858",
+        "android_client_info": {
+          "package_name": "r0896931.mobile.minigame.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149067789961-ilqalhmno495arffnm1lo1h088v44f8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "r0896931.mobile.minigame.app",
+            "certificate_hash": "25b7f6703b0d57550a2da3453d853f36d9bc5a53"
+          }
+        },
+        {
+          "client_id": "149067789961-udjm47gn8c3ee3h6mm3bkk2ebv0ujn14.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbSE2Ufkp06aoXFTW3MGI4zhuMQvygluo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149067789961-udjm47gn8c3ee3h6mm3bkk2ebv0ujn14.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
