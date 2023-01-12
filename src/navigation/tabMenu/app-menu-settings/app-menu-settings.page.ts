@@ -13,7 +13,7 @@ export class AppMenuSettingsPage implements OnInit {
   soundEffectsVolumeSlider: any = {
     value: 6
   };
-  backgroundMusicVolumeSlider: any = {
+  generalAudioVolumeSlider: any = {
     value: 6
   };
 
@@ -45,7 +45,7 @@ export class AppMenuSettingsPage implements OnInit {
       //Get volume and use it if it exists, otherwise the default value is used.
       if(value != null)
       {
-        this.backgroundMusicVolumeSlider.value = (value*10);
+        this.generalAudioVolumeSlider.value = (value*10);
       }
     });
     this.storageService.get('volumeSoundEffects').then((value: number) => {
@@ -59,17 +59,17 @@ export class AppMenuSettingsPage implements OnInit {
   changeSoundEffectsVolume() {
     this.storageService.set('volumeSoundEffects',this.soundEffectsVolumeSlider.value/10);
     }
-  changeBackgroundMusicVolume(backgroundMusicVolumeSlider: any) {
+  changeGeneralAudioVolume(backgroundMusicVolumeSlider: any) {
     console.log(backgroundMusicVolumeSlider.detail.value);
     //Sets the value of the slider to the current value
-    this.backgroundMusicVolumeSlider.value = backgroundMusicVolumeSlider.detail.value;
+    this.generalAudioVolumeSlider.value = backgroundMusicVolumeSlider.detail.value;
     //Sets stored value of the audio
     this.storageService.set('volumeBackgroundMusic', backgroundMusicVolumeSlider.detail.value/10);
     //Sets the current volume for the audio in the service
     this.audioService.setAudioVolume(backgroundMusicVolumeSlider.detail.value/10);
     //Sets the current volume for the Native audio
     this.audioService.setAudioSettingsNative();
-    console.log(this.backgroundMusicVolumeSlider.value);
+    console.log(this.generalAudioVolumeSlider.value);
   }
 }
 

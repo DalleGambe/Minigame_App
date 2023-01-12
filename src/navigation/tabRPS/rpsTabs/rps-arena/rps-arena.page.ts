@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {WeaponChoice} from '../../../../datatypes/RPS/weaponChoice';
 import {MinigameDataService} from '../../../../services/minigameData.service';
+import {RpsDataService} from '../../../../services/rpsData.service';
 
 @Component({
   selector: 'app-rps-arena',
@@ -8,54 +8,48 @@ import {MinigameDataService} from '../../../../services/minigameData.service';
   styleUrls: ['./rps-arena.page.scss'],
 })
 export class RpsArenaPage {
-
-  choicesAi: [{'schaar'},{'steen'},{'papier'}];
-
-  constructor(public minigameData: MinigameDataService) {
-    this.startGame();
+  constructor(public minigameData: MinigameDataService, public rpsData: RpsDataService) {
+    /*this.startGame();*/
   }
-  startGame()
-  {
-    //als modus vs speler is
-    //anders
-  }
-  chosenWeapon(choice) {
-    switch (choice) {
-      case '0':
-        return 'rock';
-      case '1':
-        return 'paper';
-      case '2':
-        return 'scissors';
-      case '3':
-        return 'pistol';
+
+/* async startGame() {
+    //Check if player somehow got here by cheating through url
+    if (this.minigameData.playerOneName && this.minigameData.playerTwoName !== undefined) {
+      //await for player one to press a button
+      await this.rpsData.waitForButtonPress();
+      //get  player one's weapon choice
+      this.rpsData.getPlayerOneWeaponChoice();
+      //set turn to player two
+      //True = player one, False = player two.
+      this.minigameData.setPlayerTurn(false);
+      //Check what mode it is
+      const currentGamemode = this.minigameData.getCurrentGamemode();
+      //if it's vs player
+      //If false, the gamemode is set Vs Player. Otherwise, the currently played gamemode is Vs Ai.
+      if (currentGamemode === false) {
+        //Give players time to hand over phone by making the screen black
+        //code
+        //Wait for second player to pick a weapon
+        await this.rpsData.waitForButtonPress();
+        //get  player two's weapon choice
+        this.rpsData.getPlayerTwoWeaponChoice();
+      } else {
+        //Wait for second player to pick a weapon
+        await this.rpsData.waitForButtonPress();
+        //get  player two's weapon choice
+        this.rpsData.getPlayerTwoWeaponChoice();
+        //Else if it's vs ai, set screen to black with the following text displaying
+        // "Bedankt voor je ogen te sluiten, de ai (naam van speler 2) is nu aan het kiezen!"
+        //get ai weaponchoice
+      }
+      //Compare both weapons to see who comes out on top
+      //Function
+      //Declare a winner
+      //Function
+      //Display post screen with 3 options to choose from: "Nieuwe ronde","Nieuw spel","Terug naar het menu".
+      //await function
+    } else {
+      //Redirect to choosename menu
     }
-  }
-
-  //methode vergelijk keuzes
-/*   calculateWinner(playerOneChoice: WeaponChoice, playerTwoChoice: WeaponChoice): WeaponChoice {
-    if (playerOneChoice.move == playerTwoChoice.move)
-      return { player: "Neither", move: playerOneChoice.move }
-
-    switch (playerOneChoice.move) {
-      case WeaponChoice.Rock:
-        if (playerTwoChoice.move === WeaponChoice.Paper) return playerTwoChoice;
-        break;
-      case WeaponChoice.Paper:
-        if (playerTwoChoice.move === WeaponChoice.Scissors) return playerTwoChoice;
-        break;
-      case WeaponChoice.Scissors:
-        if (playerTwoChoice.move === WeaponChoice.Rock) return playerTwoChoice;
-        break;
-      default:
-        return playerOneChoice
-    }
-    return playerOneChoice
   }*/
-  //Toonwinnaar methode
-  //maakscore aan methode
-  //update score methode
-  // indien ze al bestaat, update score anders zet ze in de databank
-
-  //toon pauze menu (service)
 }

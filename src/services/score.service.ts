@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ScoreRPS} from '../datatypes/scores/scoreRPS';
+import {MinigameDataService} from './minigameData.service';
 
 
 @Injectable({
@@ -7,13 +8,13 @@ import {ScoreRPS} from '../datatypes/scores/scoreRPS';
 })
 export class ScoreService {
 
-  // The list of task that will be displayed in the application.
+  // The list of scores that will be displayed in the application.
   #scoreList: ScoreRPS[] = [];
-  // The id for each new task.
+  // The id for each new score.
   #id = 0;
 
 
-  constructor() {
+  constructor(public minigameDataService: MinigameDataService) {
     // Uncomment to generate a collection of demo task for testing the UI.
     for (let i = 0; i < 1; i++) {
       this.#scoreList.push({
@@ -37,4 +38,14 @@ export class ScoreService {
   getAllScores(): ScoreRPS[] {
     return this.#scoreList;
   }
+  //create rps score
+  //code
+  //modify rps score
+  //code
+  //upload rps score to local storage
+  //code
+  //clear current rps score data
+  //code
+  //remove rps score from scorebord and local storage
+  //code
 }

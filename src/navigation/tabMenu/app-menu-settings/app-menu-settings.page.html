@@ -13,22 +13,15 @@
       <ion-text class="ion-padding" style="font-size: 23px;">Volume</ion-text>
     </ion-col>
     <ion-col class="md-12" offsetXs="0" offsetSm="3" offsetMd="4" sizeXs="12" sizeSm="6" sizeMd="4">
-      <ion-label class="ion-padding">Achtergrond muziek</ion-label>
+      <ion-label class="ion-padding">Algemene Audio</ion-label>
       <ion-range
         class="ion-padding" [ticks]="true" [snaps]="true" [min]="0" [max]="10"
-        [pin]="true" [pinFormatter]="pinFormatter" [(ngModel)]="backgroundMusicVolumeSlider.value" (ionChange)="changeBackgroundMusicVolume($event)">
+        [pin]="true" [pinFormatter]="pinFormatter" [(ngModel)]="generalAudioVolumeSlider.value" (ionChange)="changeGeneralAudioVolume($event)">
         <ion-icon slot="start" name="volume-low"></ion-icon>
       </ion-range>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col class="md-12" offsetXs="0" offsetSm="3" offsetMd="4" sizeXs="12" sizeSm="6" sizeMd="4">
-      <ion-label class="ion-padding">Sound effects</ion-label>
-      <ion-range [ticks]="true" [snaps]="true" [min]="0" [max]="10" [pin]="true"
-                 [pinFormatter]="pinFormatter" [(ngModel)]="soundEffectsVolumeSlider.value" (ionChange)="changeSoundEffectsVolume()">
-        <ion-icon slot="start" name="volume-low"></ion-icon>
-      </ion-range>
-    </ion-col>
     <ion-col class="md-12" offsetXs="0" offsetSm="3" offsetMd="4" sizeXs="12" sizeSm="6" sizeMd="4">
     <ion-label class="ion-padding-start">Kleurenthema</ion-label>
     </ion-col>

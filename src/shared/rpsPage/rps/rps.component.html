@@ -1,24 +1,24 @@
-<ion-row class="row" *ngIf="showPistolOption() === true; else pistolRound">
+<ion-row class="row" *ngIf="this.rpsData.isPistolRound() === true; else pistolRound">
   <ion-col size="12">
-    <ion-button>Schaar</ion-button>
+    <ion-button #scissors (click)="this.rpsData.pickWeaponChoice(scissors)" id="scissors">Schaar</ion-button>
   </ion-col>
 </ion-row>
 <ion-row class="row">
   <ion-col size="6">
-    <ion-button>Steen</ion-button>
+    <ion-button #rock (click)="this.rpsData.pickWeaponChoice(rock)" id="rock">Steen</ion-button>
   </ion-col>
   <ion-col size="6">
-    <ion-button>Papier</ion-button>
+    <ion-button #paper (click)="this.rpsData.pickWeaponChoice(paper)" id="paper">Papier</ion-button>
   </ion-col>
 </ion-row>
 
 <ng-template #pistolRound>
   <ion-row>
     <ion-col size="6">
-      <ion-button>Schaar</ion-button>
+      <ion-button #scissors (click)="this.rpsData.pickWeaponChoice(scissors)" id="scissorsPistolRound">Schaar</ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button>Pistool</ion-button>
+      <ion-button #pistol (click)="this.rpsData.pickWeaponChoice(pistol)" id="pistol">Pistool</ion-button>
     </ion-col>
   </ion-row>
 </ng-template>

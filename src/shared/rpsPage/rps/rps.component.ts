@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MinigameDataService} from '../../../services/minigameData.service';
+import {RpsDataService} from '../../../services/rpsData.service';
 
 
 @Component({
@@ -9,15 +10,9 @@ import {MinigameDataService} from '../../../services/minigameData.service';
 })
 export class RpsComponent implements OnInit {
 
-  max = 10;
-  pistolCheck = Math.floor(Math.random() * this.max);
-  constructor(public minigameData: MinigameDataService) {
+  constructor(public minigameData: MinigameDataService, public rpsData: RpsDataService) {
   }
 
-  ngOnInit() {
-  }
-
-  showPistolOption() {
-    return this.pistolCheck === this.max;
+   ngOnInit() {
   }
 }
