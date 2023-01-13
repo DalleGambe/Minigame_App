@@ -29,7 +29,7 @@ export class AudioService {
   };
   //Gets the current audio stored inside the application
   public getCurrentStoredAudioVolume() {
-    this.storageService.get('volumeBackgroundMusic').then((value: number) => {
+    this.storageService.get('generalAudioVolume').then((value: number) => {
       if (value === undefined) {
         console.log('value',{value});
         this.audioVolume = this.defaultAudioVolume;

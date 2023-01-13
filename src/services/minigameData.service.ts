@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+//This service will be used for data that could be used for ANY minigame
 export class MinigameDataService {
   //playernames from choose name
   playerOneName: string;
@@ -11,8 +12,12 @@ export class MinigameDataService {
   vsAi: boolean;
   //Current player turn
   isPlayerOneTurn: true;
+  //Current player one score
+  playerOneScore: number;
+  //Current player two score
+  playerTwoScore: number;
   constructor() {
-    this.isPlayerOneTurn = true;
+    this.setBeginningNewGame();
   }
   setMinigameModeToVsAi(value)
   {
@@ -23,13 +28,20 @@ export class MinigameDataService {
     this.playerOneName = nameOne;
     this.playerTwoName = nameTwo;
   }
+  //Executes at the start of every new round
+  setBeginningNewGame()
+  {
+    //set player turn to player one
+    this.setPlayerTurn(true);
+    //set scores to 0
+    this.playerOneScore = 0;
+    this.playerTwoScore = 0;
+  }
   clearTemporaryData()
   {
-    //Get stored mode
-    this.vsAi = true;
     this.playerOneName = '';
     this.playerTwoName = '';
-    this.isPlayerOneTurn = true;
+    this.setBeginningNewGame();
   }
   //using a boolean instead of an array because only two players are present in the minigames at most.
   setPlayerTurn(playerTurn)
@@ -44,5 +56,12 @@ export class MinigameDataService {
 
   getCurrentGamemode() {
     return this.vsAi;
+  }
+
+  getCurrentGamemodeName() {
+    if(this.getCurrentGamemode() === true){
+      return 'Vs Ai';
+    }
+    return 'Vs Speler';
   }
 }

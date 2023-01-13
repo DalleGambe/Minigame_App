@@ -1,15 +1,15 @@
 <ion-item-sliding>
 
-  <ion-item-options side='start'>
-    <ion-item-option color='success'>
-      <ion-icon slot="icon-only" name='add-outline'></ion-icon>
+  <ion-item-options side='start' (click)="this.scoreService.removeScore(score.id)">
+    <ion-item-option color='danger'>
+      <ion-icon slot="icon-only" name='trash-outline'></ion-icon>
     </ion-item-option>
   </ion-item-options>
 
 
-  <ion-item>
+  <ion-item id="{{score.id}}">
     <ion-label>
-     {{score.playerOneName}} {{score.playerOneScore}} - {{score.playerTwoScore}} {{score.playerTwoName}} {{score.minigameMode}}
+     {{score.playerOneName}} {{score.playerOneScore}} - {{score.playerTwoScore}} {{score.playerTwoName}} | Mode: {{score.minigameMode}}
     </ion-label>
 
   </ion-item>

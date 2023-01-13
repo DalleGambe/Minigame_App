@@ -25,7 +25,9 @@ export class VsAiPage {
   }
 
   goToChooseName() {
+    //set gamemode to vs ai
     this.minigameData.setMinigameModeToVsAi(true);
+    //go to choosename
     this.route.navigate(['tabs/tabRPS/rpsTabs/choose-name']).then();
   }
 }

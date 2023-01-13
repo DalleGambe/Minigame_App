@@ -32,12 +32,6 @@
 </ion-header>
 
 <ion-list lines='full'>
-  <!--
-  The *ngFor directive allows for iteration over a array or other
-  iterable object. The iteration variable task can be used within the confines
-  of the tag which contains the *ngFor.
-  <app-task-item> Is a custom component defined in /shared/task-item/*
-  -->
   <app-score
     *ngFor='let s of scoreService.getAllScores()'
     [score]='s'>

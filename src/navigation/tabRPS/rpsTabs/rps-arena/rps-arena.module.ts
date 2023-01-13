@@ -10,12 +10,12 @@ import { RpsArenaPage } from './rps-arena.page';
 import {SharedModule} from '../../../../shared/shared.module';
 
 @NgModule({
-    imports: [
+  imports: [
         CommonModule,
         FormsModule,
         IonicModule,
         RpsArenaPageRoutingModule,
-        SharedModule
+        SharedModule,
     ],
   declarations: [RpsArenaPage]
 })

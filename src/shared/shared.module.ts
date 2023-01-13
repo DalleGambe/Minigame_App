@@ -15,6 +15,6 @@ import {SidemenuComponent} from './sidemenu/sidemenu.component';
   exports: [
     RpsComponent,
     SidemenuComponent,
-  ]
+  ],
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-<ion-row class="row" *ngIf="this.rpsData.isPistolRound() === true; else pistolRound">
+<ion-row class="row" *ngIf="(rpsData.isPistolroundObservable | async) !== true;  else pistolRound">
   <ion-col size="12">
     <ion-button #scissors (click)="this.rpsData.pickWeaponChoice(scissors)" id="scissors">Schaar</ion-button>
   </ion-col>
