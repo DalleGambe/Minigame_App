@@ -10,28 +10,29 @@ export class ScoreService {
 
   // The list of scores that will be displayed in the application.
   #scoreList: ScoreRPS[] = [];
-  // The id for each new score.
-  #id = 0;
 
 
   constructor(public minigameDataService: MinigameDataService) {
     // Uncomment to generate a collection of demo task for testing the UI.
     for (let i = 0; i < 1; i++) {
       this.#scoreList.push({
+        id: 'eafdsfsdfesfesfd2683',
         playerOneName: 'Justin',
         playerTwoName: 'Robert',
-        totalScore: '3-1',
-        title: 'Justin vs Robert 3 - 1',
-        id: this.#id,
+        playerOneScore: 3,
+        playerTwoScore: 1,
+        minigameName: 'RPS',
+        minigameMode: 'Vs Player'
       });
-      this.#id++;
     }
     this.#scoreList.push({
+      id: 'sdfsdfvcbnghtgf36',
       playerOneName: 'Bob',
       playerTwoName: 'Jessica',
-      totalScore: '4-5',
-      title: 'Bob vs Jessica 4 - 5',
-      id: this.#id,
+      playerOneScore: 4,
+      playerTwoScore: 5,
+      minigameName: 'RPS',
+      minigameMode: 'Vs Ai'
     });
   }
 

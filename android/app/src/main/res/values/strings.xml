@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Mobile Minigame App</string>
-    <string name="title_activity_main">Mobile Minigame App</string>
+    <string name="app_name">Tchaiko</string>
+    <string name="title_activity_main">Tchaiko</string>
     <string name="package_name">r0896931.mobile.minigame.app</string>
     <string name="custom_url_scheme">r0896931.mobile.minigame.app</string>
 </resources>

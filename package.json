@@ -1,8 +1,8 @@
 {
   "name": "FrogGame",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.5",
+  "author": "Dalle Gambe",
+  "homepage": "https://github.com/DalleGambe/Minigame_App",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "android": "ionic build --prod && pnpm exec cap sync android && pnpm exec cap open android"
+    "android": "ionic build --prod && pnpm exec cap sync android && pnpm exec cap open android",
+    "android-resources": "capacitor-assets generate --iconBackgroundColor #eeeeee --iconBackgroundColorDark #222222 --splashBackgroundColor #eeeeee --splashBackgroundColorDark #111111 --android",
+    "ios-resources": "capacitor-assets generate --iconBackgroundColor #eeeeee --iconBackgroundColorDark #222222 --splashBackgroundColor #eeeeee --splashBackgroundColorDark #111111 --ios",
+    "gen-resources": "pnpm run ios-resources && pnpm run android-resources"
   },
   "private": true,
   "dependencies": {

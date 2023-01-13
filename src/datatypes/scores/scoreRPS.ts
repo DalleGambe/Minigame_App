@@ -1,7 +1,9 @@
 export interface ScoreRPS {
+  id?: string;
   playerOneName: string;
   playerTwoName: string;
-  totalScore: string;
-  title: string;
-  id: number;
+  playerOneScore: number;
+  playerTwoScore: number;
+  minigameName: string;
+  minigameMode: string;
 }
