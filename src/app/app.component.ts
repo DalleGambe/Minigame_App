@@ -3,6 +3,7 @@ import {MenuService} from '../services/menu.service';
 import {StorageService} from '../services/storage.service';
 import {Capacitor} from '@capacitor/core';
 import {AudioService} from '../services/audio.service';
+import {NativeAudio} from '@capgo/native-audio';
 
 
 @Component({
@@ -17,6 +18,19 @@ export class AppComponent implements OnInit {
   isNative() {
     return Capacitor.isNativePlatform();
   }
+  preLoadAndPlayAudioMobile() {
+    if (Capacitor.isNativePlatform()) {
+      NativeAudio.preload({
+        assetId: 'mario',
+        assetPath: 'mario.mp3',
+        audioChannelNum: 1,
+        isUrl: false
+      }).then();
+      NativeAudio.loop({
+        assetId: 'mario',
+      }).then();
+    }
+  }
   ngOnInit(): void {
     this.storageService.get('colortheme').then((value: string) => {
       switch(value)
@@ -29,6 +43,8 @@ export class AppComponent implements OnInit {
           break;
       }
     });
+    //preload music and sound effects
+    this.preLoadAndPlayAudioMobile();
   }
 }
 

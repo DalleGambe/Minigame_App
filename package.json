@@ -13,7 +13,8 @@
     "android": "ionic build --prod && pnpm exec cap sync android && pnpm exec cap open android",
     "android-resources": "capacitor-assets generate --iconBackgroundColor #eeeeee --iconBackgroundColorDark #222222 --splashBackgroundColor #eeeeee --splashBackgroundColorDark #111111 --android",
     "ios-resources": "capacitor-assets generate --iconBackgroundColor #eeeeee --iconBackgroundColorDark #222222 --splashBackgroundColor #eeeeee --splashBackgroundColorDark #111111 --ios",
-    "gen-resources": "pnpm run ios-resources && pnpm run android-resources"
+    "gen-resources": "pnpm run ios-resources && pnpm run android-resources",
+    "pwa-resources": "pwa-asset-generator ./resources/icon.png ./src/assets/icons -m ./src/manifest.webmanifest -i ./src/index.html"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@angular/service-worker": "14.2.5",
     "@capacitor-firebase/authentication": "^1.2.0",
     "@capacitor/android": "^4.6.1",
     "@capacitor/app": "4.0.1",
@@ -75,5 +77,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.7.3"
   },
-  "description": "An Ionic project"
+  "description": "Tchaiko is a minigame package app that is planned to launch with 3 minigames after it's alpha release."
 }

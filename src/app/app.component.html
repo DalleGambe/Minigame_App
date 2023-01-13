@@ -6,7 +6,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <audio id="NotNativeAudio" *ngIf="isNative() === false" loop src="assets/sounds/mario.mp3"
+    <audio id="NotNativeAudio" *ngIf="isNative() === false" preload="auto" loop src="assets/sounds/mario.mp3"
            ngDefaultControl [volume]="audioService.getAudioVolume()" autoplay></audio>
 
     <ion-content class="ion-padding">

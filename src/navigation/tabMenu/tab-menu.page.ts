@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {AlertController, AnimationController} from '@ionic/angular';
-import {NativeAudio} from '@capgo/native-audio';
 import {Capacitor} from '@capacitor/core';
 
 @Component({
@@ -19,7 +18,6 @@ export class TabMenuPage {
               private route: Router,
               private alertController: AlertController,
               private animationCtrl: AnimationController) {
-    this.preLoadAndPlayAudioMobile();
   }
 
   async presentLogOutAlert() {
@@ -71,20 +69,6 @@ export class TabMenuPage {
 
   ionViewDidEnter() {
     this.showCredit().then();
-    this.preLoadAndPlayAudioMobile();
-  }
-  preLoadAndPlayAudioMobile() {
-    if (Capacitor.isNativePlatform()) {
-      NativeAudio.preload({
-        assetId: 'mario',
-        assetPath: 'mario.mp3',
-        audioChannelNum: 1,
-        isUrl: false
-      }).then();
-      NativeAudio.loop({
-        assetId: 'mario',
-      }).then();
-    }
   }
 
   isNative() {

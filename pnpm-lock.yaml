@@ -17,6 +17,7 @@ specifiers:
   '@angular/platform-browser': ^14.0.0
   '@angular/platform-browser-dynamic': ^14.0.0
   '@angular/router': ^14.0.0
+  '@angular/service-worker': 14.2.5
   '@capacitor-firebase/authentication': ^1.2.0
   '@capacitor/android': ^4.6.1
   '@capacitor/app': 4.0.1
@@ -65,6 +66,7 @@ dependencies:
   '@angular/platform-browser': 14.2.5_6cqngvdn4hhjftafvmpiekc4o4
   '@angular/platform-browser-dynamic': 14.2.5_qnosvl3bcq6o66d35eafiejfki
   '@angular/router': 14.2.5_njhfcerir4zsyl4qlbsbeiwx6e
+  '@angular/service-worker': 14.2.5_6cqngvdn4hhjftafvmpiekc4o4
   '@capacitor-firebase/authentication': 1.2.0_cwhesv37tz3cf3oibsii5dzqwe
   '@capacitor/android': 4.6.1_@capacitor+core@4.6.1
   '@capacitor/app': 4.0.1_@capacitor+core@4.6.1
@@ -84,7 +86,7 @@ dependencies:
   zone.js: 0.11.8
 
 devDependencies:
-  '@angular-devkit/build-angular': 14.2.5_xfra27qzvc4imiho6iohlb2yhy
+  '@angular-devkit/build-angular': 14.2.5_gwtfmmkilrxuvr7pudl3uv5ka4
   '@angular-eslint/builder': 13.0.1_hxadhbs2xogijvk7vq4t2azzbu
   '@angular-eslint/eslint-plugin': 13.0.1_hxadhbs2xogijvk7vq4t2azzbu
   '@angular-eslint/eslint-plugin-template': 13.0.1_hxadhbs2xogijvk7vq4t2azzbu
@@ -140,7 +142,7 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/build-angular/14.2.5_xfra27qzvc4imiho6iohlb2yhy:
+  /@angular-devkit/build-angular/14.2.5_gwtfmmkilrxuvr7pudl3uv5ka4:
     resolution: {integrity: sha512-jSgH11E+zs1C24lXj7R/PgXsTUpoYoMr1GtO6mpVROgXL5czVlL+b/B1p2HwbcAKuI9WXb48X6OZ6fOZhDQlSg==}
     engines: {node: ^14.15.0 || >=16.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -171,6 +173,7 @@ packages:
       '@angular-devkit/build-webpack': 0.1402.5_mldmorf72vas4wjtkspcp7zl7m
       '@angular-devkit/core': 14.2.5
       '@angular/compiler-cli': 14.2.5_gvrhfvvalz4sacw5khnn6gc5wm
+      '@angular/service-worker': 14.2.5_6cqngvdn4hhjftafvmpiekc4o4
       '@babel/core': 7.18.10
       '@babel/generator': 7.18.12
       '@babel/helper-annotate-as-pure': 7.18.6
@@ -438,7 +441,6 @@ packages:
       '@angular/core': 14.2.5_rxjs@6.6.7+zone.js@0.11.8
       rxjs: 6.6.7
       tslib: 2.4.0
-    dev: false
 
   /@angular/compiler-cli/14.2.5_gvrhfvvalz4sacw5khnn6gc5wm:
     resolution: {integrity: sha512-3GYzTPw96TfJjw7Aso+f+uN6VFBWedqRATUQ6v+BAEyZIboirdLI1JQFOcCfuKWUM2B48RW+pdIduZmG3ckotA==}
@@ -596,6 +598,18 @@ packages:
       rxjs: 6.6.7
       tslib: 2.4.0
     dev: false
+
+  /@angular/service-worker/14.2.5_6cqngvdn4hhjftafvmpiekc4o4:
+    resolution: {integrity: sha512-0OCp3U4+kO2H+275JlaOhHl2KtFBobByo9WpHyQV+iWIAxwBcStxuL7NXRcPTxmrvzyM6doZt1d/V3NA5eiIPA==}
+    engines: {node: ^14.15.0 || >=16.10.0}
+    hasBin: true
+    peerDependencies:
+      '@angular/common': 14.2.5
+      '@angular/core': 14.2.5
+    dependencies:
+      '@angular/common': 14.2.5_dd7odd3hpbsz6apcl7vz4bm2im
+      '@angular/core': 14.2.5_rxjs@6.6.7+zone.js@0.11.8
+      tslib: 2.4.0
 
   /@assemblyscript/loader/0.10.1:
     resolution: {integrity: sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==}
