@@ -2,20 +2,24 @@ import {Injectable} from '@angular/core';
 import {MinigameDataService} from './minigameData.service';
 import {ModalController} from '@ionic/angular';
 import {BehaviorSubject} from 'rxjs';
+import {ScoreService} from './score.service';
 
 @Injectable({
   providedIn: 'root'
 })
 //A service exclusively used for the minigame rock paper scissors
 export class RpsDataService {
+  roundResult: string;
   playerOneWeaponChoice: string;
   playerTwoWeaponChoice: string;
-  max = 10;
+  numberThatNeedsToBeRolledForPistol = 10;
   pistolCheck: number;
   private isPistolRound = new BehaviorSubject(false);
   // eslint-disable-next-line @typescript-eslint/member-ordering
   isPistolroundObservable = this.isPistolRound.asObservable();
-  constructor(public minigameDataService: MinigameDataService, public modalController: ModalController) {
+
+  constructor(public minigameDataService: MinigameDataService,
+              public modalController: ModalController, public scoreData: ScoreService) {
   }
 
   pickWeaponChoice(weapon) {
@@ -25,7 +29,7 @@ export class RpsDataService {
       //change weapon choice to scissors if the scissors button was pressed during a pistol round
       weaponChoice = 'scissors';
     }
-   //check which player's turn it is and add it to that current player
+    //check which player's turn it is and add it to that current player
     //True means player one, false means player two.
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     this.minigameDataService.getCurrentPlayerTurn() === true ?
@@ -43,18 +47,20 @@ export class RpsDataService {
         this.playerTwoWeaponChoice = this.getAiWeaponChoice();
       }
       const roundResult = this.calculateRoundWinner(this.playerOneWeaponChoice, this.playerTwoWeaponChoice);
-      //Check i
+      this.scoreData.setCurentScoreInRPSMatch(this.scoreData.getCurrentScoreInRpsMatch());
+      this.scoreData.updateScore(this.scoreData.getCurrentScoreInRpsMatch());
       this.getPostScreen(roundResult);
     }
   }
 
   rollPistolCheck() {
     //Generate random number between 1 and max (10 in this case)
-    this.pistolCheck = Math.floor(Math.random() * this.max)+1;
+    this.pistolCheck = Math.floor(Math.random() * this.numberThatNeedsToBeRolledForPistol) + 1;
     //Checks if the value is equal to max while calling the next method on the object of isPistolRound
     // eslint-disable-next-line no-underscore-dangle
-    this.isPistolRound.next(this.pistolCheck === this.max);
+    this.isPistolRound.next(this.pistolCheck === this.numberThatNeedsToBeRolledForPistol);
   }
+
   getAiWeaponChoice() {
     //The ai will never have a pistol as option since it wouldn't be as fun.
     //generate weapon choice
@@ -73,9 +79,13 @@ export class RpsDataService {
     }
   }
 
+  clearTemporaryRPSdata() {
+    this.minigameDataService.clearTemporaryData();
+    this.scoreData.setCurentScoreInRPSMatch(undefined);
+  }
+
   getPostScreen(roundResult) {
-    //reset turn
-    /*this.minigameDataService.setPlayerTurn(true);*/
+    //
   }
 
   calculateRoundWinner(playerOneWeaponChoice, playerTwoWeaponChoice) {
@@ -84,7 +94,6 @@ export class RpsDataService {
       case 'rockrock':
       case 'paperpaper':
       case 'pistolpistol':
-        //update score
         return 'Draw';
       case 'scissorsrock':
       case 'scissorspistol':
@@ -92,10 +101,10 @@ export class RpsDataService {
       case 'rockpistol':
       case 'paperscissors':
       case 'paperpistol:':
-        //update score
+        this.scoreData.getCurrentScoreInRpsMatch().playerTwoScore++;
         return 'Lose';
       default:
-        //update score
+        this.scoreData.getCurrentScoreInRpsMatch().playerOneScore++;
         return 'Win';
     }
   }

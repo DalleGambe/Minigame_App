@@ -14,6 +14,8 @@ export class ScoreService {
   // The list of scores that will be displayed in the application.
   #scoreList: ScoreRPS[] = [];
 
+  //Current RPS score in minigame match
+  currentScoreInRPSMatch: ScoreRPS;
 
   constructor(public minigameDataService: MinigameDataService, public storageService: StorageService) {
     this.fetchLocalScoreData();
@@ -35,7 +37,8 @@ export class ScoreService {
       minigameName: 'Schaar, steen, papier!',
       minigameMode: this.minigameDataService.getCurrentGamemodeName(),
     };
-    console.log(newRpsScore);
+    //set current score to this recent one
+    this.setCurentScoreInRPSMatch(newRpsScore);
     //save in storage
     //get the currently stored Array of data
         //add current score to array
@@ -91,5 +94,18 @@ export class ScoreService {
   saveRPSScoreList(scoreList: ScoreRPS[])
   {
     this.storageService.set('LocalScorebordData', scoreList);
+  }
+
+  getCurrentScoreInRpsMatch()
+  {
+    this.storageService.get('currentScoreInRPSMatch').then((value: ScoreRPS) => {
+      //If there is no data
+      this.currentScoreInRPSMatch = value;
+    });
+    return this.currentScoreInRPSMatch;
+  }
+
+  setCurentScoreInRPSMatch(score: ScoreRPS) {
+    this.storageService.set('currentScoreInRPSMatch', score);
   }
 }

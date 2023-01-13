@@ -30,14 +30,14 @@
   </ion-select>
 </ion-toolbar>
 </ion-header>
-
-<ion-list lines='full'>
-  <app-score
-    *ngFor='let s of scoreService.getAllScores()'
-    [score]='s'>
-  </app-score>
-</ion-list>
-
 <ion-content>
-
+  <ion-list lines='full' *ngIf="scoreService.getAllScores().length !== 0; else noScores">
+    <app-score
+      *ngFor='let s of scoreService.getAllScores()'
+      [score]='s'>
+    </app-score>
+  </ion-list>
 </ion-content>
+<ng-template #noScores>
+<span>Geen scores gevonden! Speel een minigame om ze hier te zien!</span>
+</ng-template>

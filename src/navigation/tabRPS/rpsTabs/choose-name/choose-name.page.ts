@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MinigameDataService} from '../../../../services/minigameData.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController} from '@ionic/angular';
+import {ScoreService} from '../../../../services/score.service';
 
 @Component({
   selector: 'app-choose-name',
@@ -13,7 +14,7 @@ export class ChooseNamePage implements OnInit {
   ionicForm: FormGroup;
   isSubmitted = false;
   constructor(private route: Router, public minigameData: MinigameDataService, public formBuilder: FormBuilder,
-              private alertController: AlertController) {
+              private alertController: AlertController, public scoreData: ScoreService) {
   }
 
   get errorControl() {

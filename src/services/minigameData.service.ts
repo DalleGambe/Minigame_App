@@ -43,6 +43,7 @@ export class MinigameDataService {
     this.playerTwoName = '';
     this.setBeginningNewGame();
   }
+
   //using a boolean instead of an array because only two players are present in the minigames at most.
   setPlayerTurn(playerTurn)
   {

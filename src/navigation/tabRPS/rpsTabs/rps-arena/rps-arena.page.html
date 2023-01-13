@@ -26,19 +26,19 @@
     </ion-col>
   </ion-row>
   <app-rps></app-rps>
-  <ion-button id="open-postscreen" expand="block">Open Modal</ion-button>
+  <ion-button id="open-postscreen" expand="block">Zie uitslag</ion-button>
 
-  <ion-modal trigger="open-postscreen">
+  <ion-modal trigger="open-postscreen" backdrop-dismiss="false">
     <ng-template>
       <ion-content>
         <ion-toolbar>
-          <ion-title>Einde van de Ronde</ion-title>
+          <ion-title>Ding Ding! Einde van de Ronde!</ion-title>
         </ion-toolbar>
         <ion-list>
           <ion-item>
             <ion-label>
-              <h2>Score</h2>
-              <p>Sales Rep</p>
+              <h1>{{minigameData.playerOneName}} versus {{minigameData.playerTwoName}}</h1>
+              <h2>{{this.minigameData.playerOneScore}} - {{this.minigameData.playerTwoScore}}</h2>
             </ion-label>
           </ion-item>
           <ion-button expand="block" (click)="nextRpsRound()">Volgende ronde?</ion-button>
