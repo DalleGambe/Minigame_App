@@ -24,13 +24,11 @@ export class RpsArenaPage implements OnInit {
   ngOnInit(): void {
     //See if player one may get a pistol as option
     this.rpsData.rollPistolCheck();
-    //Generate a score and add it to the list scorelist
-    this.scoreData.createRpsScore();
   }
 
   newGame() {
     //reset everything
-    this.rpsData.clearTemporaryRPSdata();
+    this.rpsData.clearTemporaryRpsData();
     //Go to choosename page
     this.route.navigate(['tabs/tabRPS/rpsTabs/choose-name']).then();
     this.modalController.dismiss();

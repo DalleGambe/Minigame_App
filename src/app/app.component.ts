@@ -21,13 +21,19 @@ export class AppComponent implements OnInit {
   preLoadAndPlayAudioMobile() {
     if (Capacitor.isNativePlatform()) {
       NativeAudio.preload({
-        assetId: 'mario',
-        assetPath: 'mario.mp3',
+        assetId: 'startscreenClick',
+        assetPath: 'startscreen_click.mp3',
+        audioChannelNum: 1,
+        isUrl: false
+      });
+      NativeAudio.preload({
+        assetId: 'menutheme',
+        assetPath: 'menutheme.mp3',
         audioChannelNum: 1,
         isUrl: false
       }).then();
       NativeAudio.loop({
-        assetId: 'mario',
+        assetId: 'menutheme',
       }).then();
     }
   }

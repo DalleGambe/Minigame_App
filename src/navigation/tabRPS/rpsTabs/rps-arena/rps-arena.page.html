@@ -11,7 +11,7 @@
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <ion-label>{{minigameData.playerOneName}} versus {{minigameData.playerTwoName}}</ion-label>
+      <ion-label>{{this.scoreData.currentScoreInRpsMatch.playerOneName}} versus {{this.scoreData.currentScoreInRpsMatch.playerTwoName}}</ion-label>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -21,32 +21,10 @@
   </ion-row>
   <ion-row>
     <ion-col size="12">
-      <ion-label>{{minigameData.getCurrentPlayerTurn() === true ? minigameData.playerOneName + ", kies een wapen!"
-        : minigameData.playerTwoName + ", kies een wapen!"}}</ion-label>
+      <ion-label>{{minigameData.getCurrentPlayerTurn() === true ? this.scoreData.currentScoreInRpsMatch.playerOneName + ", kies een wapen!"
+        : this.scoreData.currentScoreInRpsMatch.playerTwoName + ", kies een wapen!"}}</ion-label>
     </ion-col>
   </ion-row>
   <app-rps></app-rps>
-  <ion-button id="open-postscreen" expand="block">Zie uitslag</ion-button>
-
-  <ion-modal trigger="open-postscreen" backdrop-dismiss="false">
-    <ng-template>
-      <ion-content>
-        <ion-toolbar>
-          <ion-title>Ding Ding! Einde van de Ronde!</ion-title>
-        </ion-toolbar>
-        <ion-list>
-          <ion-item>
-            <ion-label>
-              <h1>{{minigameData.playerOneName}} versus {{minigameData.playerTwoName}}</h1>
-              <h2>{{this.minigameData.playerOneScore}} - {{this.minigameData.playerTwoScore}}</h2>
-            </ion-label>
-          </ion-item>
-          <ion-button expand="block" (click)="nextRpsRound()">Volgende ronde?</ion-button>
-          <ion-button expand="block" (click)="newGame()">Nieuw potje?</ion-button>
-          <ion-button expand="block" (click)="goToRpsMenu()">Terug naar menu</ion-button>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 </ion-content>
 

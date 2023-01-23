@@ -7,17 +7,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-label class="headerTitle">Wie gaat er spelen?</ion-label>
+<ion-content class="ion-padding">
+  <ion-label><h1>Wie gaat er spelen?</h1></ion-label>
   <form [formGroup]="ionicForm" (ngSubmit)="goToRpsArena()" novalidate>
     <ion-row class="ion-align-items-center titleRow">
       <ion-col size="6">
-        <ion-label>Player 1</ion-label>
+        <ion-label>Speler 1</ion-label>
         <ion-input placeholder="Bob" formControlName="playerOne"></ion-input>
 
       </ion-col>
       <ion-col size="6">
-        <ion-label>{{minigameData.vsAi === true ? "Player 2 (Ai)" : "Player 2"}}</ion-label>
+        <ion-label>{{minigameData.vsAi === true ? "Speler 2 (Ai)" : "Speler 2"}}</ion-label>
         <ion-input placeholder="Sandy" formControlName="playerTwo"></ion-input>
       </ion-col>
       <ion-button class="ion-color-primary" type="submit">Engarde!</ion-button>

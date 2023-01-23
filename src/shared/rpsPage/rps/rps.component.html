@@ -1,24 +1,24 @@
 <ion-row class="row" *ngIf="(rpsData.isPistolroundObservable | async) !== true;  else pistolRound">
   <ion-col size="12">
-    <ion-button #scissors (click)="this.rpsData.pickWeaponChoice(scissors)" id="scissors">Schaar</ion-button>
+    <ion-button #schaar (click)="this.rpsData.pickWeaponChoice(schaar)" id="schaar">Schaar</ion-button>
   </ion-col>
 </ion-row>
 <ion-row class="row">
   <ion-col size="6">
-    <ion-button #rock (click)="this.rpsData.pickWeaponChoice(rock)" id="rock">Steen</ion-button>
+    <ion-button #steen (click)="this.rpsData.pickWeaponChoice(steen)" id="steen">Steen</ion-button>
   </ion-col>
   <ion-col size="6">
-    <ion-button #paper (click)="this.rpsData.pickWeaponChoice(paper)" id="paper">Papier</ion-button>
+    <ion-button #papier (click)="this.rpsData.pickWeaponChoice(papier)" id="papier">Papier</ion-button>
   </ion-col>
 </ion-row>
 
 <ng-template #pistolRound>
   <ion-row>
     <ion-col size="6">
-      <ion-button #scissors (click)="this.rpsData.pickWeaponChoice(scissors)" id="scissorsPistolRound">Schaar</ion-button>
+      <ion-button #schaar (click)="this.rpsData.pickWeaponChoice(schaar)" id="schaarPistoolRonde">Schaar</ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button #pistol (click)="this.rpsData.pickWeaponChoice(pistol)" id="pistol">Pistool</ion-button>
+      <ion-button #pistool (click)="this.rpsData.pickWeaponChoice(pistool)" id="pistool">Pistool</ion-button>
     </ion-col>
   </ion-row>
 </ng-template>

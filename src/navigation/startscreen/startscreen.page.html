@@ -3,6 +3,9 @@
   </ion-toolbar>
 </ion-header>
 
+<audio id="NotNativeStartscreenSoundeffect" *ngIf="isNative() === false" preload="auto" src="assets/sounds/startscreen_click.mp3"
+       ngDefaultControl [volume]="audioService.getAudioVolume()"></audio>
+
 <ion-content class="background container ion-text-center" style="font-size: 32px">
   <ion-row class="ion-align-items-center">
     <ion-col size="12" style="margin: 0;
@@ -10,7 +13,7 @@
   top: 75%;
   -ms-transform: translateY(-25%);
   transform: translateY(-25%);">
-      <ion-text [routerLink]="['/tabs/tabMenu']">Druk hier om te starten!</ion-text>
+      <ion-text [routerLink]="['/tabs/tabMenu']" (click)='playSoundeffect()'>Druk hier om te starten!</ion-text>
     </ion-col>
   </ion-row>
 </ion-content>

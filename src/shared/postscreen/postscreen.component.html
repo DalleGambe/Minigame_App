@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ding Ding! Einde van de Ronde!</ion-title>
+  </ion-toolbar>
+</ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            <h1>{{this.scoreData.currentScoreInRpsMatch.playerOneName}} versus {{this.scoreData.currentScoreInRpsMatch.playerTwoName}}</h1>
+            <h2>{{this.scoreData.currentScoreInRpsMatch.playerOneScore}} - {{this.scoreData.currentScoreInRpsMatch.playerTwoScore}}</h2>
+            <h2>{{this.scoreData.currentScoreInRpsMatch.playerOneName}}'s keuze: {{this.rpsData.playerOneWeaponChoice}}</h2>
+            <h2>{{this.scoreData.currentScoreInRpsMatch.playerTwoName}}'s keuze: {{this.rpsData.playerTwoWeaponChoice}}</h2>
+            <h2>Resultaat: {{result}}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-button expand="block" (click)="nextRpsRound()">Volgende ronde?</ion-button>
+        <ion-button expand="block" (click)="newGame()">Nieuw potje?</ion-button>
+        <ion-button expand="block" (click)="goToRpsMenu()">Terug naar menu</ion-button>
+      </ion-list>
+    </ion-content>
+    <ion-footer></ion-footer>
+
+

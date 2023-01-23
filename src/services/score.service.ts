@@ -12,13 +12,14 @@ import {StorageService} from './storage.service';
 export class ScoreService {
 
   // The list of scores that will be displayed in the application.
-  #scoreList: ScoreRPS[] = [];
+  #scoreList: ScoreRPS[];
 
   //Current RPS score in minigame match
-  currentScoreInRPSMatch: ScoreRPS;
+  currentScoreInRpsMatch: ScoreRPS;
 
   constructor(public minigameDataService: MinigameDataService, public storageService: StorageService) {
     this.fetchLocalScoreData();
+    this.getCurrentScoreInRpsMatch();
   }
 
   getAllScores(): ScoreRPS[] {
@@ -27,7 +28,7 @@ export class ScoreService {
 
   //create rps score
   //code
-  createRpsScore() {
+  async createRpsScore() {
     const newRpsScore: ScoreRPS = {
       id: this.createUniqueId(),
       playerOneName: this.minigameDataService.playerOneName,
@@ -37,32 +38,31 @@ export class ScoreService {
       minigameName: 'Schaar, steen, papier!',
       minigameMode: this.minigameDataService.getCurrentGamemodeName(),
     };
-    //set current score to this recent one
-    this.setCurentScoreInRPSMatch(newRpsScore);
-    //save in storage
-    //get the currently stored Array of data
-        //add current score to array
-        this.#scoreList.push(newRpsScore);
-        //save array in storage
-        this.saveRPSScoreList(this.#scoreList);
+    //set current score to the current one being played for
+    await this.setLocalStoredScoreInRpsMatch(newRpsScore);
+    //add current score to array
+    this.#scoreList.push(newRpsScore);
+    //save array in storage
+    this.saveRPSScoreList(this.#scoreList);
   }
 
   //Fetches the local data of all the scores
   fetchLocalScoreData() {
     this.storageService.get('LocalScorebordData').then((value: ScoreRPS[]) => {
-      //If there is no data
-      if(value === undefined)
-      {
-        //Create empty scorelist
+      //Check if the value is undefined or null
+      if (value === undefined  || value === null) {
+        //If it is, Create an empty array for the scorelist
         value = [];
-        this.saveRPSScoreList(value);
       }
       this.#scoreList = value;
+      console.log(value);
+      console.log(this.#scoreList);
+      this.saveRPSScoreList(value);
     });
   }
 
   //Creates a unique id for the score by generating a random number and getting the current date
-   createUniqueId() {
+  createUniqueId() {
     const max = 10000;
     const min = 1;
     const currentDate = Date.now();
@@ -73,8 +73,8 @@ export class ScoreService {
     return uniqueId;
   }
 
-  updateScore(score: ScoreRPS)
-  {
+  //Update a currently existing score
+  updateScore(score: ScoreRPS) {
     const scoreThatNeedsUpdating = this.#scoreList.find(s => s.id === score.id);
     if (scoreThatNeedsUpdating) {
       scoreThatNeedsUpdating.playerOneName = score.playerOneName;
@@ -87,25 +87,32 @@ export class ScoreService {
     this.saveRPSScoreList(this.#scoreList);
   }
 
+  //Delete a score from the locally stored list
   removeScore(id: string) {
+    //Filter list so that the score in question is no longer in it
     this.#scoreList = this.#scoreList.filter(score => score.id !== id);
+    //Save list
     this.saveRPSScoreList(this.#scoreList);
   }
-  saveRPSScoreList(scoreList: ScoreRPS[])
-  {
+
+  saveRPSScoreList(scoreList: ScoreRPS[]) {
     this.storageService.set('LocalScorebordData', scoreList);
   }
 
-  getCurrentScoreInRpsMatch()
-  {
-    this.storageService.get('currentScoreInRPSMatch').then((value: ScoreRPS) => {
-      //If there is no data
-      this.currentScoreInRPSMatch = value;
-    });
-    return this.currentScoreInRPSMatch;
+  getCurrentScoreInRpsMatch() {
+    this.setDisplayedScoreInRPSMatch();
+    return this.currentScoreInRpsMatch;
   }
 
-  setCurentScoreInRPSMatch(score: ScoreRPS) {
+  //Sets the score in the current local storage
+  setLocalStoredScoreInRpsMatch(score: ScoreRPS) {
     this.storageService.set('currentScoreInRPSMatch', score);
+  }
+  //Sets the currently displayed score in a match on a page
+  setDisplayedScoreInRPSMatch() {
+    this.storageService.get('currentScoreInRPSMatch').then((value: ScoreRPS) => {
+      //If there is no data
+      this.currentScoreInRpsMatch = value;
+    });
   }
 }

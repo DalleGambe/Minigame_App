@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StorageService} from './storage.service';
 import {NativeAudio} from '@capgo/native-audio';
+import {Capacitor} from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AudioService {
   constructor(private storageService: StorageService) {
     this.getCurrentStoredAudioVolume();
   }
+
   //Gets the current set audio in the service
   public getAudioVolume(): number {
     if (this.audioVolume === undefined) {
@@ -27,11 +29,12 @@ export class AudioService {
   public setAudioVolume(audioNumber: number) {
     this.audioVolume = audioNumber;
   };
+
   //Gets the current audio stored inside the application
   public getCurrentStoredAudioVolume() {
     this.storageService.get('generalAudioVolume').then((value: number) => {
       if (value === undefined) {
-        console.log('value',{value});
+        console.log('value', {value});
         this.audioVolume = this.defaultAudioVolume;
       } else {
         this.audioVolume = value;
@@ -39,9 +42,21 @@ export class AudioService {
     });
     console.log(this.audioVolume);
   }
+
   //Sets the current Native volume of the Audio
- public setAudioSettingsNative = (): void => {
+  public setAudioSettingsNative() {
+    //setvolume
     NativeAudio.setVolume({assetId: 'mario', volume: this.getAudioVolume()});
+    NativeAudio.setVolume({assetId: 'startscreenClick', volume: this.getAudioVolume()});
   };
+
+  playSoundEffect(soundEffect: string) {
+    if (Capacitor.isNativePlatform) {
+      NativeAudio.play({
+        assetId: soundEffect,
+        time: 0
+      });
+    }
+  }
 }
 

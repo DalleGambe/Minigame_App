@@ -3,13 +3,13 @@ import {MinigameDataService} from './minigameData.service';
 import {ModalController} from '@ionic/angular';
 import {BehaviorSubject} from 'rxjs';
 import {ScoreService} from './score.service';
+import {PostscreenComponent} from '../shared/postscreen/postscreen.component';
 
 @Injectable({
   providedIn: 'root'
 })
 //A service exclusively used for the minigame rock paper scissors
 export class RpsDataService {
-  roundResult: string;
   playerOneWeaponChoice: string;
   playerTwoWeaponChoice: string;
   numberThatNeedsToBeRolledForPistol = 10;
@@ -22,12 +22,12 @@ export class RpsDataService {
               public modalController: ModalController, public scoreData: ScoreService) {
   }
 
-  pickWeaponChoice(weapon) {
+  async pickWeaponChoice(weapon) {
     //Get the id from the button pressed
     let weaponChoice = weapon.el.id;
-    if (weaponChoice === 'scissorsPistolRound') {
+    if (weaponChoice === 'schaarPistoolRonde') {
       //change weapon choice to scissors if the scissors button was pressed during a pistol round
-      weaponChoice = 'scissors';
+      weaponChoice = 'schaar';
     }
     //check which player's turn it is and add it to that current player
     //True means player one, false means player two.
@@ -47,9 +47,12 @@ export class RpsDataService {
         this.playerTwoWeaponChoice = this.getAiWeaponChoice();
       }
       const roundResult = this.calculateRoundWinner(this.playerOneWeaponChoice, this.playerTwoWeaponChoice);
-      this.scoreData.setCurentScoreInRPSMatch(this.scoreData.getCurrentScoreInRpsMatch());
+      //Updates/Sets the current matchscore in the current local storage
+      this.scoreData.setLocalStoredScoreInRpsMatch(this.scoreData.getCurrentScoreInRpsMatch());
+      //Updates the score in the scorelist
       this.scoreData.updateScore(this.scoreData.getCurrentScoreInRpsMatch());
-      this.getPostScreen(roundResult);
+      //Wait for postscreen
+      await this.getPostScreen(roundResult);
     }
   }
 
@@ -69,43 +72,54 @@ export class RpsDataService {
     //return weapon based on rolled choice
     switch (rolledWeaponChoice) {
       case 1:
-        return 'scissors';
+        return 'schaar';
       case 2:
-        return 'rock';
+        return 'steen';
       case 3:
-        return 'paper';
+        return 'papier';
       default:
-        return 'scissors';
+        return 'schaar';
     }
   }
 
-  clearTemporaryRPSdata() {
+  clearTemporaryRpsData() {
     this.minigameDataService.clearTemporaryData();
-    this.scoreData.setCurentScoreInRPSMatch(undefined);
+    this.scoreData.setLocalStoredScoreInRpsMatch(undefined);
   }
 
-  getPostScreen(roundResult) {
-    //
+  async getPostScreen(roundResult: string) {
+    //Open modal
+      const modal = await this.modalController.create({
+        component: PostscreenComponent,
+        componentProps: {
+          //Result of the round
+          result: roundResult,
+        },
+        //Makes sure that the modal can't be dismissed by clicking outside of it
+        backdropDismiss:false
+      });
+      console.log(roundResult);
+      await modal.present();
   }
 
   calculateRoundWinner(playerOneWeaponChoice, playerTwoWeaponChoice) {
     switch (playerOneWeaponChoice + playerTwoWeaponChoice) {
-      case 'scissorsscissors':
-      case 'rockrock':
-      case 'paperpaper':
-      case 'pistolpistol':
-        return 'Draw';
-      case 'scissorsrock':
-      case 'scissorspistol':
-      case 'rockpaper':
-      case 'rockpistol':
-      case 'paperscissors':
-      case 'paperpistol:':
+      case 'schaarschaar':
+      case 'steensteen':
+      case 'papierpapier':
+      case 'pistoolpistool':
+        return 'Gelijkspel!';
+      case 'schaarsteen':
+      case 'schaarpistool':
+      case 'steenpapier':
+      case 'steenpistool':
+      case 'papierschaar':
+      case 'papierpistool:':
         this.scoreData.getCurrentScoreInRpsMatch().playerTwoScore++;
-        return 'Lose';
+        return this.scoreData.currentScoreInRpsMatch.playerTwoName + ' heeft deze ronde gewonnen!';
       default:
         this.scoreData.getCurrentScoreInRpsMatch().playerOneScore++;
-        return 'Win';
+        return this.scoreData.currentScoreInRpsMatch.playerOneName + ' heeft deze rond gewonnen!';
     }
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Filter} from '../../datatypes/filters/filter';
 import {FilterMinigames} from '../../datatypes/filters/filterMinigames';
 import {FilterModes} from '../../datatypes/filters/filterModes';

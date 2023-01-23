@@ -2,6 +2,7 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 
 import {StorageService} from '../../../services/storage.service';
 import {AudioService} from '../../../services/audio.service';
+import {Capacitor} from '@capacitor/core';
 
 @Component({
   selector: 'app-app-menu-settings',
@@ -53,8 +54,10 @@ export class AppMenuSettingsPage implements OnInit {
     this.storageService.set('generalAudioVolume', generalAudioVolumeSlider.detail.value/10);
     //Sets the current volume for the audio in the service
     this.audioService.setAudioVolume(generalAudioVolumeSlider.detail.value/10);
-    //Sets the current volume for the Native audio
-    this.audioService.setAudioSettingsNative();
+    //Sets the current volume for the Native audio if the user is using a native device
+    if (Capacitor.isNativePlatform()) {
+      this.audioService.setAudioSettingsNative();
+    }
   }
 }
 

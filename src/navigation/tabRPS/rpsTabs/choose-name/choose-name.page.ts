@@ -22,6 +22,7 @@ export class ChooseNamePage implements OnInit {
   }
 
   //Maakt een formgroep aan samen met hun validators
+  //Translation English: Creates a formgroup with validation
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       playerOne: ['', [Validators.required, Validators.minLength(2)]],
@@ -31,25 +32,34 @@ export class ChooseNamePage implements OnInit {
 
   submitForm() {
     //Laat het programma weten dat er een form is verstuurd
+    //Translation English: Let's the program know that a form was send
     this.isSubmitted = true;
     //Checks if everything is valid
     return this.ionicForm.valid;
   }
 
-  goToRpsArena() {
+  async goToRpsArena() {
     let errors;
     if (this.submitForm() === true) {
       //if both name fields are filled in
       this.minigameData.setPlayernames(this.ionicForm.get('playerOne').value, this.ionicForm.get('playerTwo').value);
+      //Wait for a score to be generated and added it to the list of local stored scores
+      await this.scoreData.createRpsScore();
+      //Set the current score that's going to be displayed in the arena
+      this.scoreData.setDisplayedScoreInRPSMatch();
+      //Navigate to the rps arena
       this.route.navigate(['tabs/tabRPS/rpsTabs/rps-arena']).then();
     } else {
       //check wat er fout is en toon dit in een alert
+      //Translation English: Checks what error there is en shows it to the user through an alert
       errors = this.controleValidatieFouten();
       this.presentErrorMessage(errors).then();
     }
   }
   //Controleert welke fouten er juist zijn
+  //Translation to English: Checks what errors there are
   //De gevonden fouten worden teruggestuurd en getoond aan de gebruiker in een array.
+  //Translation to English: The errors found get added to an array and are displayed to the user through an alert.
   controleValidatieFouten()
   {
     let errors = '';
@@ -64,7 +74,8 @@ export class ChooseNamePage implements OnInit {
     return errors;
   }
 
-  //Alert dat getoond wordt aan de gebruiker
+  //Alert dat getoond wordt aan de gebruiker wanneer ze een fout tegenkomen
+  //English translation: Alert that is shown to the user upon encountering an error.
   async presentErrorMessage(errorMessage) {
     const alert = await this.alertController.create({
       header:'Error',
