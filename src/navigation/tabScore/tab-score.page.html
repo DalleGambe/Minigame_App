@@ -17,8 +17,8 @@
   <hr>
 <ion-toolbar>
   <ion-select class="ion-padding-horizontal" interface="popover"
-              slot='end' [(ngModel)]='selectedScoreFilter'>
-    <ion-select-option *ngFor='let f of filterScores' [value]="f">
+              slot='end' [(ngModel)]='selectedDateFilter'>
+    <ion-select-option *ngFor='let f of filterScoresBasedOnDate' [value]="f">
       {{f}}
     </ion-select-option>
   </ion-select>
@@ -31,9 +31,9 @@
 </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list lines='full' *ngIf="scoreService.getAllScores().length !== 0; else noScores">
+  <ion-list lines='full' *ngIf="scoreService.getAllScores(selectedModeFilter).length !== 0; else noScores">
     <app-score
-      *ngFor='let s of scoreService.getAllScores()'
+      *ngFor='let s of scoreService.getAllScores(selectedModeFilter)'
       [score]='s'>
     </app-score>
   </ion-list>

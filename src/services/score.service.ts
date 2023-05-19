@@ -13,6 +13,7 @@ export class ScoreService {
 
   // The list of scores that will be displayed in the application.
   #scoreList: ScoreRPS[];
+  #filteredScoreList: ScoreRPS[];
 
   //Current RPS score in minigame match
   currentScoreInRpsMatch: ScoreRPS;
@@ -22,7 +23,13 @@ export class ScoreService {
     this.getCurrentScoreInRpsMatch();
   }
 
-  getAllScores(): ScoreRPS[] {
+  getAllScores(mode: string | undefined): ScoreRPS[] {
+   /* if(mode !== undefined)
+    {
+      //return a copy of the filtered scorelist
+      return this.#filteredScoreList = this.#scoreList.sort();
+    }*/
+    //return the unfiltered scorelist
     return this.#scoreList;
   }
 

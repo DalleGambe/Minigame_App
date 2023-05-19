@@ -28,6 +28,9 @@ specifiers:
   '@capacitor/preferences': ^4.0.2
   '@capacitor/status-bar': 4.0.1
   '@capgo/native-audio': ^5.0.4
+  '@ionic-native/core': ^5.36.0
+  '@ionic-native/sqlite': ^5.36.0
+  '@ionic-native/sqlite-porter': ^5.36.0
   '@ionic/angular': ^6.1.9
   '@ionic/angular-toolkit': ^6.0.0
   '@ionic/storage-angular': ^3.0.6
@@ -36,6 +39,7 @@ specifiers:
   '@types/node': ^12.11.1
   '@typescript-eslint/eslint-plugin': 5.3.0
   '@typescript-eslint/parser': 5.3.0
+  cordova-sqlite-storage: ^6.1.0
   eslint: ^7.6.0
   eslint-plugin-import: 2.22.1
   eslint-plugin-jsdoc: 30.7.6
@@ -56,6 +60,7 @@ specifiers:
   ts-node: ~8.3.0
   tslib: ^2.2.0
   typescript: ~4.7.3
+  uk.co.workingedge.cordova.plugin.sqliteporter: ^1.1.1
   zone.js: ~0.11.4
 
 dependencies:
@@ -76,13 +81,18 @@ dependencies:
   '@capacitor/preferences': 4.0.2_@capacitor+core@4.6.1
   '@capacitor/status-bar': 4.0.1_@capacitor+core@4.6.1
   '@capgo/native-audio': 5.0.4_@capacitor+core@4.6.1
+  '@ionic-native/core': 5.36.0_rxjs@6.6.7
+  '@ionic-native/sqlite': 5.36.0_hhevxojdfny3bqzq2dkva2vrvq
+  '@ionic-native/sqlite-porter': 5.36.0_hhevxojdfny3bqzq2dkva2vrvq
   '@ionic/angular': 6.3.0_rccjhj6z4m5e4vgtmro4gxsmem
   '@ionic/storage-angular': 3.0.6_dd7odd3hpbsz6apcl7vz4bm2im
+  cordova-sqlite-storage: 6.1.0
   firebase: 9.15.0
   ionicons: 6.0.3
   react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
   rxjs: 6.6.7
   tslib: 2.4.0
+  uk.co.workingedge.cordova.plugin.sqliteporter: 1.1.1
   zone.js: 0.11.8
 
 devDependencies:
@@ -2646,6 +2656,37 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@ionic-native/core/5.36.0_rxjs@6.6.7:
+    resolution: {integrity: sha512-lOrkktadlKYbYf1LrDyAtsu1JnQ0oCCdkOU7iHQ8oXnNOkMwobFfD2m62F1CoOr0u9LIkpYnZSPjng8lZbmbNw==}
+    peerDependencies:
+      rxjs: ^5.5.0 || ^6.5.0
+    dependencies:
+      '@types/cordova': 11.0.0
+      rxjs: 6.6.7
+    dev: false
+
+  /@ionic-native/sqlite-porter/5.36.0_hhevxojdfny3bqzq2dkva2vrvq:
+    resolution: {integrity: sha512-piggWVrwC3rFdf/d8wSurHKjcpEx3dsIflYMkhdw8EiZQu3qniVCqjOML5wr8z6hUfzVHUbLHIwMMJsPtTXsjQ==}
+    peerDependencies:
+      '@ionic-native/core': ^5.1.0
+      rxjs: ^5.5.0 || ^6.5.0
+    dependencies:
+      '@ionic-native/core': 5.36.0_rxjs@6.6.7
+      '@types/cordova': 11.0.0
+      rxjs: 6.6.7
+    dev: false
+
+  /@ionic-native/sqlite/5.36.0_hhevxojdfny3bqzq2dkva2vrvq:
+    resolution: {integrity: sha512-+1nXUqBucwG6MYoEvqKlZecvI3xVGWeKIzdZf8Nc4vQx4JFDUYdluiEw3mfzptCC1S/4l6skBsL8eZLFfpzUKA==}
+    peerDependencies:
+      '@ionic-native/core': ^5.1.0
+      rxjs: ^5.5.0 || ^6.5.0
+    dependencies:
+      '@ionic-native/core': 5.36.0_rxjs@6.6.7
+      '@types/cordova': 11.0.0
+      rxjs: 6.6.7
+    dev: false
+
   /@ionic/angular-toolkit/6.1.0:
     resolution: {integrity: sha512-QZkoNdXej4MQqKGdm+suzTK39R0iRGpBFhOzP+f75v4ZGgEQ+ntA213UdaTa6EvsvS7n14p0zbHiBroLUOCNzQ==}
     dependencies:
@@ -3147,6 +3188,10 @@ packages:
   /@types/cookie/0.4.1:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
     dev: true
+
+  /@types/cordova/11.0.0:
+    resolution: {integrity: sha512-AtBm1IAqqXsXszJe6XxuA2iXLhraNCj25p/FHRyikPeW0Z3YfgM6qzWb+VJglJTmZc5lqRNy84cYM/sQI5v6Vw==}
+    dev: false
 
   /@types/cors/2.8.12:
     resolution: {integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==}
@@ -4460,6 +4505,16 @@ packages:
       serialize-javascript: 6.0.0
       webpack: 5.74.0_esbuild@0.15.5
     dev: true
+
+  /cordova-sqlite-storage-dependencies/4.1.0:
+    resolution: {integrity: sha512-D0ZXfNkS3z9GO+Ha2rC2odvOOMcx/moL8lpVDFxXqcsCEZbJimuki4wZfdrQrGlNd/d7r4DNodljRmO20v6Ntg==}
+    dev: false
+
+  /cordova-sqlite-storage/6.1.0:
+    resolution: {integrity: sha512-ko/edy+u9MJVYrXdB6OXUklH0eIRWpa/Rvang7YkvQvsswc9vZr0pM/Ty6eX0MJtLOMJuCXIOiiHZZZbZSZikw==}
+    dependencies:
+      cordova-sqlite-storage-dependencies: 4.1.0
+    dev: false
 
   /core-js-compat/3.25.5:
     resolution: {integrity: sha512-ovcyhs2DEBUIE0MGEKHP4olCUW/XYte3Vroyxuh38rD1wAO4dHohsovUC4eAOuzFxE6b+RXvBU3UZ9o0YhUTkA==}
@@ -9943,6 +9998,10 @@ packages:
   /ua-parser-js/0.7.31:
     resolution: {integrity: sha512-qLK/Xe9E2uzmYI3qLeOmI0tEOt+TBBQyUIAh4aAgU05FVYzeZrKUdkAZfBNVGRaHVgV0TDkdEngJSw/SyQchkQ==}
     dev: true
+
+  /uk.co.workingedge.cordova.plugin.sqliteporter/1.1.1:
+    resolution: {integrity: sha512-VlIZNbZ+RFMZmAc8r2EnR+JPnlIBrvNaer78xh8EPSpgZqPlyVgIFuxnXMsVck84nMAbgQteh4H/4hVK+yc/Lw==}
+    dev: false
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}

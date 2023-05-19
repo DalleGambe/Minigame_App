@@ -46,7 +46,7 @@ export class AudioService {
   //Sets the current Native volume of the Audio
   public setAudioSettingsNative() {
     //setvolume
-    NativeAudio.setVolume({assetId: 'mario', volume: this.getAudioVolume()});
+    NativeAudio.setVolume({assetId: 'menutheme', volume: this.getAudioVolume()});
     NativeAudio.setVolume({assetId: 'startscreenClick', volume: this.getAudioVolume()});
   };
 

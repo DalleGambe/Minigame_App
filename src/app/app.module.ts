@@ -14,10 +14,13 @@ import {getAuth, provideAuth} from '@angular/fire/auth' ;
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+import { HttpClientModule } from '@angular/common/http';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 
 @NgModule({
   declarations: [AppComponent],
-    imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule, SharedModule,
+    imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule, SharedModule, HttpClientModule,
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
       // Firebase authentication import.
       provideAuth(() => getAuth()),
@@ -27,7 +30,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         // or after 30 seconds (whichever comes first).
         registrationStrategy: 'registerWhenStable:30000'
       })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ SQLite, SQLitePorter,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

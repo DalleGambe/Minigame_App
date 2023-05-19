@@ -3,7 +3,7 @@ import {Filter} from '../../datatypes/filters/filter';
 import {FilterMinigames} from '../../datatypes/filters/filterMinigames';
 import {FilterModes} from '../../datatypes/filters/filterModes';
 import {ScoreService} from '../../services/score.service';
-import {FilterScores} from '../../datatypes/filters/filterScores';
+import {FilterScoresBasedOnDate} from '../../datatypes/filters/filterScoresBasedOnDate';
 
 @Component({
   selector: 'app-tab-score',
@@ -24,8 +24,8 @@ export class TabScorePage{
   filterModes = Object.values(FilterModes) as FilterModes[];
   selectedModeFilter = this.filterModes[0];
 
-  filterScores = Object.values(FilterScores) as FilterScores[];
-  selectedScoreFilter = this.filterScores[0];
+  filterScoresBasedOnDate = Object.values(FilterScoresBasedOnDate) as FilterScoresBasedOnDate[];
+  selectedDateFilter = this.filterScoresBasedOnDate[0];
 
   constructor(public scoreService: ScoreService) {
   }
