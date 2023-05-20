@@ -20,12 +20,14 @@ export class DbService {
   ) {
     this.platform.ready().then(() => {
       this.sqlite.create({
-        name: 'positronx_db.db',
+        name: 'TchaikoDb.db',
         location: 'default'
       })
         .then((db: SQLiteObject) => {
           this.storage = db;
+/*
           this.getFakeData();
+*/
         });
     });
   }
@@ -36,7 +38,7 @@ export class DbService {
   fetchScoreList(): Observable<ScoreRPS[]> {
     return this.scoreList.asObservable();
   }
-  // Render fake data
+/*  // Render fake data
   getFakeData() {
     this.httpClient.get(
       'assets/dump.sql',
@@ -49,8 +51,25 @@ export class DbService {
         })
         .catch(error => console.error(error));
     });
-  }
+  }*/
   // Get list
+  getEntitiesFromTable<T>(tableName: string): Promise<void> {
+    return this.storage
+      .executeSql(`SELECT * FROM ${tableName}`, [])
+      .then(res => {
+        const items: T[] = [];
+        if (res.rows.length > 0) {
+          for (let i = 0; i < res.rows.length; i++) {
+            items.push({
+              id: res.rows.item(i).id,
+              ...res.rows.item(i)
+            } as T);
+          }
+        }
+        this.scoreList.next(items);
+      });
+  }
+
   getScoreList(){
     return this.storage.executeSql('SELECT * FROM ScoreTable', []).then(res => {
       const scoreCollection: ScoreRPS[] = [];
@@ -71,30 +90,37 @@ export class DbService {
     });
   }
   // Add
- /* addScore(ScoreRPS Score) {
-    return this.storage.executeSql('INSERT INTO ScoreTable (artist_name, song_name) VALUES (?, ?)', data)
-      .then(res => {
-        this.getScoreList();
+  addObjectToDb<T>(object: T, tableName: string) {
+    const fieldNames = Object.keys(object).join(', ');
+    const placeholders = Object.keys(object).fill('?').join(', ');
+    const data = Object.values(object);
+    const query = `INSERT INTO ${tableName} (${fieldNames}) VALUES (${placeholders})`;
+    return this.storage
+      .executeSql(query, data)
+      .then(() => {
+        this.getEntitiesFromTable(tableName);
       });
-  }*/
+  }
 
   // Get single object
   getScore(id): Promise<ScoreRPS> {
-    return this.storage.executeSql('SELECT * FROM ScoreTable WHERE id = ?', [id]).then(res => {
-      return {
+    return this.storage.executeSql('SELECT * FROM ScoreTable WHERE id = ?', [id]).then(res => ({
         id: res.rows.item(0).id,
-        artist_name: res.rows.item(0).artist_name,
-        song_name: res.rows.item(0).song_name
-      }
-    });
+        playerOneName: res.rows.item(0).playerOneName,
+        playerTwoName: res.rows.item(0).playerTwoName,
+        playerOneScore: res.rows.item(0).playerOneScore,
+        playerTwoScore: res.rows.item(0).playerTwoScore,
+        minigameName: res.rows.item(0).minigameName,
+        minigameMode: res.rows.item(0).minigameMode
+      }));
   }
   // Update
-  updateScore(id, song: ScoreRPS) {
-    let data = [song.artist_name, song.song_name];
+  updateScore(id, score: ScoreRPS) {
+    const data = [...Object.values(score)];
     return this.storage.executeSql(`UPDATE ScoreTable SET artist_name = ?, song_name = ? WHERE id = ${id}`, data)
-      .then(data => {
+      .then(result => {
         this.getScoreList();
-      })
+      });
   }
   // Delete
   deleteScore(id) {
